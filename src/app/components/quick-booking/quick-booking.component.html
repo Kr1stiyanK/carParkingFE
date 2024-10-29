@@ -1,0 +1,56 @@
+<div class="container">
+  <h2>Quick Booking</h2>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-item">
+      <label for="date">Date:</label>
+      <input id="date" formControlName="date" type="date">
+      <div *ngIf="form.controls['date'].invalid && (form.controls['date'].dirty || form.controls['date'].touched)">
+        <small class="error">Date is required and cannot be in the past</small>
+      </div>
+    </div>
+    <div class="form-item">
+      <label for="startHour">Start Time:</label>
+      <select id="startHour" formControlName="startHour">
+        <option *ngFor="let hour of hours" [value]="hour">{{ hour }}:00</option>
+      </select>
+      <div *ngIf="form.controls['startHour'].invalid && (form.controls['startHour'].dirty || form.controls['startHour'].touched)">
+        <small class="error">Start time is required</small>
+      </div>
+    </div>
+    <div class="form-item">
+      <label for="endHour">End Time:</label>
+      <select id="endHour" formControlName="endHour">
+        <option *ngFor="let hour of hours" [value]="hour">{{ hour }}:00</option>
+      </select>
+      <div *ngIf="form.controls['endHour'].invalid && (form.controls['endHour'].dirty || form.controls['endHour'].touched)">
+        <small class="error">End time must be after start time</small>
+      </div>
+      <div *ngIf="form.errors?.['invalidTimeRange']">
+        <small class="error">End time must be after start time</small>
+      </div>
+    </div>
+    <div class="form-item">
+      <button type="button" (click)="checkAvailability()" [disabled]="form.invalid">Check Availability</button>
+    </div>
+    <div class="form-item" *ngIf="availabilityMessage">
+      <p>{{ availabilityMessage }}</p>
+      <p *ngIf="totalPrice !== null">Total Price: {{ totalPrice }} BGN</p>
+    </div>
+    <div *ngIf="totalPrice !== null">
+      <div class="form-item">
+        <label>
+          <input type="radio" formControlName="paymentMethod" value="cash" (change)="onPaymentMethodChange('cash')"> Pay on site
+        </label>
+      </div>
+      <div class="form-item">
+        <label>
+          <input type="radio" formControlName="paymentMethod" value="card" (change)="onPaymentMethodChange('card')"> Pay now with card
+        </label>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+

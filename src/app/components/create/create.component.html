@@ -1,0 +1,44 @@
+<daypilot-modal #modal (close)="closed($event)">
+  <div class="center">
+    <h1>Create Booking</h1>
+    <form [formGroup]="form">
+      <div class="form-item">
+        <label for="name">Booking Name</label>
+        <input id="name" formControlName="name" type="text" placeholder="Booking Name">
+        <span *ngIf="!form.controls['name'].valid">Booking name required</span>
+      </div>
+      <div class="form-item">
+        <label for="resource">Parking Space</label>
+        <select id="resource" formControlName="resource" readonly>
+          <option *ngFor="let r of resources" [ngValue]="r.id">{{r.name}}</option>
+        </select>
+      </div>
+      <div class="form-item">
+        <label for="start">Start</label>
+        <input id="start" formControlName="start" type="text" placeholder="Start">
+        <span *ngIf="!form.controls['start'].valid">Invalid datetime</span>
+      </div>
+      <div class="form-item">
+        <label for="end">End</label>
+        <input id="end" formControlName="end" type="text" placeholder="End">
+      </div>
+      <div class="form-item">
+        <p>Total Price: {{ totalPrice }} BGN</p>
+      </div>
+      <div class="form-item">
+        <label>
+          <input type="radio" formControlName="paymentMethod" value="cash"> Pay on site
+        </label>
+      </div>
+      <div class="form-item">
+        <label>
+          <input type="radio" formControlName="paymentMethod" value="card"> Pay now with card
+        </label>
+      </div>
+      <div class="form-item">
+        <button (click)="submit()" [disabled]="!form.valid">Submit</button>
+        <button (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</daypilot-modal>

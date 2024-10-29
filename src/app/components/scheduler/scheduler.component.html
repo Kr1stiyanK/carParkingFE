@@ -1,0 +1,16 @@
+<div class="header">
+  <div class="filters">
+<!--    <label for="shortonly"><input type="checkbox" id="shortonly" [ngModel]="filter.shortOnly"-->
+<!--                                  (ngModelChange)="changeShort($event)"> Short Bookings Only</label>-->
+<!--    <label for="freeonly"><input type="checkbox" id="freeonly" [ngModel]="filter.freeOnly"-->
+<!--                                 (ngModelChange)="changeFree($event)"> Free Parking Spaces Only</label>-->
+  </div>
+  <div class="user-actions">
+    <button [routerLink]="['/map']">See on map</button>
+    <button [routerLink]="['/profile']">My Profile</button>
+    <button (click)="logout()">Logout</button>
+  </div>
+</div>
+<daypilot-scheduler [config]="config" [events]="events" #scheduler></daypilot-scheduler>
+<create-dialog #create (close)="createClosed($event)"></create-dialog>
+<edit-dialog #edit (close)="editClosed($event)"></edit-dialog>

@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>All Profiles</h1>
+  <button [routerLink]="['/profile']">Back to Profile</button>
+  <table>
+    <thead>
+    <tr>
+      <th>Username</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let profile of profiles">
+      <td>{{ profile.email }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

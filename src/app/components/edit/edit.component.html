@@ -1,0 +1,35 @@
+<daypilot-modal #modal (close)="closed($event)">
+  <div class="center">
+    <h1>Update Booking</h1>
+    <form [formGroup]="form">
+      <div class="form-item">
+        <input formControlName="name" type="text" placeholder="Event Name">
+        <span *ngIf="!form.controls['name'].valid">Event name required</span>
+      </div>
+      <div class="form-item">
+        <select formControlName="resource" readonly>
+          <option *ngFor="let r of resources" [ngValue]="r.id">{{r.name}}</option>
+        </select>
+      </div>
+      <div class="form-item">
+        <input formControlName="start" type="text" placeholder="Start">
+        <span *ngIf="!form.controls['start'].valid">Invalid datetime</span>
+      </div>
+      <div class="form-item">
+        <input formControlName="end" type="text" placeholder="End">
+        <span *ngIf="!form.controls['end'].valid">Invalid datetime</span>
+      </div>
+      <div class="form-item">
+        <button type="button" (click)="checkAvailability()">Check Availability</button>
+      </div>
+      <div class="form-item" *ngIf="saveButtonVisible">
+        <button type="button" (click)="submit()" [disabled]="!form.valid">Save</button>
+        <button type="button" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</daypilot-modal>
+
+
+
+

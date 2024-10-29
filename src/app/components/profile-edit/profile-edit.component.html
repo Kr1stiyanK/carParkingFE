@@ -1,0 +1,56 @@
+<div class="container">
+  <h2>Edit Profile</h2>
+  <button (click)="showEmailForm = !showEmailForm">Edit Email</button>
+  <button (click)="showPasswordForm = !showPasswordForm">Change Password</button>
+
+  <div *ngIf="showEmailForm" class="form-container">
+    <form [formGroup]="profileForm" (ngSubmit)="updateEmail()">
+      <div>
+        <label for="currentEmail">Current Email:</label>
+        <input id="currentEmail" formControlName="currentEmail" type="email">
+        <div *ngIf="profileForm.get('currentEmail')?.invalid && (profileForm.get('currentEmail')?.dirty || profileForm.get('currentEmail')?.touched)">
+          <small *ngIf="profileForm.get('currentEmail')?.errors?.['required']">Current email is required.</small>
+          <small *ngIf="profileForm.get('currentEmail')?.errors?.['email']">Invalid email format.</small>
+        </div>
+      </div>
+      <div>
+        <label for="newEmail">New Email:</label>
+        <input id="newEmail" formControlName="newEmail" type="email">
+        <div *ngIf="profileForm.get('newEmail')?.invalid && (profileForm.get('newEmail')?.dirty || profileForm.get('newEmail')?.touched)">
+          <small *ngIf="profileForm.get('newEmail')?.errors?.['required']">New email is required.</small>
+          <small *ngIf="profileForm.get('newEmail')?.errors?.['email']">Invalid email format.</small>
+        </div>
+      </div>
+      <button type="submit" [disabled]="!profileForm.valid">Update Email</button>
+    </form>
+  </div>
+
+  <div *ngIf="showPasswordForm" class="form-container">
+    <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
+      <div>
+        <label for="currentPassword">Current Password:</label>
+        <input id="currentPassword" formControlName="currentPassword" type="password">
+        <div *ngIf="changePasswordForm.get('currentPassword')?.invalid && (changePasswordForm.get('currentPassword')?.dirty || changePasswordForm.get('currentPassword')?.touched)">
+          <small *ngIf="changePasswordForm.get('currentPassword')?.errors?.['required']">Current password is required.</small>
+        </div>
+      </div>
+      <div>
+        <label for="newPassword">New Password:</label>
+        <input id="newPassword" formControlName="newPassword" type="password">
+        <div *ngIf="changePasswordForm.get('newPassword')?.invalid && (changePasswordForm.get('newPassword')?.dirty || changePasswordForm.get('newPassword')?.touched)">
+          <small *ngIf="changePasswordForm.get('newPassword')?.errors?.['required']">New password is required.</small>
+          <small *ngIf="changePasswordForm.get('newPassword')?.errors?.['minlength']">New password must be at least 6 characters long.</small>
+        </div>
+      </div>
+      <div>
+        <label for="confirmPassword">Confirm New Password:</label>
+        <input id="confirmPassword" formControlName="confirmPassword" type="password">
+        <div *ngIf="changePasswordForm.get('confirmPassword')?.invalid && (changePasswordForm.get('confirmPassword')?.dirty || changePasswordForm.get('confirmPassword')?.touched)">
+          <small *ngIf="changePasswordForm.get('confirmPassword')?.errors?.['required']">Confirming your new password is required.</small>
+          <small *ngIf="changePasswordForm.errors?.['mismatch']">Passwords do not match.</small>
+        </div>
+      </div>
+      <button type="submit" [disabled]="!changePasswordForm.valid">Change Password</button>
+    </form>
+  </div>
+</div>
