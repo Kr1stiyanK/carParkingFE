@@ -18,6 +18,8 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "@react-oauth/google": "^0.12.1",
+    "angular-oauth2-oidc": "^17.0.2",
     "daypilot-pro-angular": "https://npm.daypilot.org/daypilot-pro-angular/trial/2024.2.5944.tar.gz",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

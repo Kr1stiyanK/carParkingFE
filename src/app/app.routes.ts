@@ -22,7 +22,7 @@ export const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'quick-booking', component: QuickBookingComponent},
   {path: 'booking-success', component: BookingSuccessComponent},
-  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'profile', component: ProfileComponent,canActivate: [AuthGuard]},
   {path: 'profile-edit', component: ProfileEditComponent, canActivate: [AuthGuard]},
   {path: 'my-bookings', component: MybookingsComponent, canActivate: [AuthGuard]},
   {path: 'scheduler', component: SchedulerComponent, canActivate: [AuthGuard]},

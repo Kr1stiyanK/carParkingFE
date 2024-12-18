@@ -84,7 +84,7 @@ export class DataService {
   getCurrentUser(): string | null {
     const token = localStorage.getItem('jwtToken');
     if (token) {
-      const payload = JSON.parse(atob(token.split('.')[1]));
+      const payload = JSON.parse(atob(token!.split('.')[1]));
       return payload.sub;
     }
     return null;
@@ -103,15 +103,25 @@ export class DataService {
   logout() {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('expires_at');
-    this.router.navigate(['/login']);
+    this.deleteCookie('JSESSIONID');
+    this.deleteCookie('jwtToken');
+
+    this.http.post(BASE_URL + 'api/logout', {})
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/login']);
+        }
+      });
+  }
+
+
+  deleteCookie(name: string) {
+    document.cookie = `${name}=; Path=/; Max-Age=0;`;
   }
 
   changeEmail(updateEmailRequest: any): Observable<any> {
     const headers = DataService.createAuthorizationHeader();
     return this.http.put(BASE_URL + 'api/update-email', updateEmailRequest, {headers}).pipe(
-      tap(response => {
-        console.log('Update email response:', response);
-      }),
       catchError(error => {
         console.error('Update email error:', error);
         return throwError(error);

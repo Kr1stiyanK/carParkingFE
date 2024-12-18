@@ -48,7 +48,6 @@ export class RegisterComponent implements OnInit {
           this.router.navigateByUrl('/login');
         }
       }, (error => {
-        console.log('Registration failed', error);
         alert('Registration failed: ' + error.message);
       })
     )

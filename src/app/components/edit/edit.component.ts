@@ -70,8 +70,6 @@ export class EditComponent implements OnInit {
     });
     const originalStart = ev.start();
     const originalEnd = ev.end().addHours(-1);
-    console.log(originalStart);
-    console.log(originalEnd);
     const originalDuration = (originalEnd.getTime() - originalStart.getTime()) / (1000 * 60 * 60);
     this.originalAmount = originalDuration * 3;
 
@@ -123,11 +121,6 @@ export class EditComponent implements OnInit {
       resourceId: +data.resource,
       amount: newAmount
     };
-
-    console.log(start.toString(this.dateFormat2));
-    console.log(end.toString(this.dateFormat2));
-    console.log(newAmount);
-    console.log(this.originalAmount);
 
     if (newAmount > this.originalAmount) {
       if (!confirm(`The new booking amount is ${newAmount} BGN. Do you want to proceed with payment?`)) {

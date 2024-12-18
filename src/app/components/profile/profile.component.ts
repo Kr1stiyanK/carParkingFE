@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router, RouterModule} from "@angular/router";
 import {DataService} from "../../service/data.service";
 import {CommonModule} from "@angular/common";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-profile',
@@ -28,5 +29,4 @@ export class ProfileComponent implements OnInit {
     this.ds.logout();
     this.router.navigate(['/home']);
   }
-
 }

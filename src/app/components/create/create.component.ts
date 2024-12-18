@@ -75,7 +75,6 @@ export class CreateComponent {
       if (this.ds.isLoggedIn()) {
         this.submitForLoggedInUser(params, data);
       } else {
-        console.log(this.ds.isLoggedIn());
         this.submitForGuestUser(data);
       }
     }

@@ -3,15 +3,23 @@
   <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" formControlName="email" />
+      <input type="email" class="form-control" id="email" formControlName="email"/>
     </div>
 
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" formControlName="password" />
+      <input type="password" class="form-control" id="password" formControlName="password"/>
     </div>
 
     <button type="submit" class="btn" [class.active]="!loginForm.invalid" [disabled]="loginForm.invalid">Login</button>
+
   </form>
   <button [routerLink]="['/home']" class="btn home-btn">Home</button>
+  <div class="google-login-container">
+    <button class="google-login-btn" (click)="loginWithGoogle()">
+      <img src="assets/Google-G-logo.svg" alt="Google Logo" class="google-logo"/>
+      <span>Login with Google</span>
+    </button>
+  </div>
+
 </div>
