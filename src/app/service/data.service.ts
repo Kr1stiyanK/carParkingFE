@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, of, throwError} from 'rxjs';
 import {DayPilot} from 'daypilot-pro-angular';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError, tap} from "rxjs/operators";
+import {catchError} from "rxjs/operators";
 import {Router} from "@angular/router";
 
 const BASE_URL = 'http://localhost:8081/';
@@ -134,6 +134,13 @@ export class DataService {
     return this.http.put(BASE_URL + 'api/change-password', passwordData, {headers});
   }
 
+  requestPasswordReset(email: string): Observable<any> {
+    return this.http.post(BASE_URL + 'api/forgotten-password', email);
+  }
+
+  resetPassword(token: string, newPassword: string): Observable<any> {
+    return this.http.post(BASE_URL + 'api/reset-password', {token, newPassword}, { responseType: 'text' });
+  }
 
   getMyBookings(email: string): Observable<any[]> {
     const headers = DataService.createAuthorizationHeader();

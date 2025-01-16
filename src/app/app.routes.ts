@@ -14,6 +14,8 @@ import {AllprofilesComponent} from "./components/allprofiles/allprofiles.compone
 import {AllbookingsComponent} from "./components/allbookings/allbookings.component";
 import {PaymentEditComponent} from "./components/payment-edit/payment-edit.component";
 import {MapComponent} from "./components/map/map.component";
+import {ForgotpasswordComponent} from "./components/forgotpassword/forgotpassword.component";
+import {ResetpasswordComponent} from "./components/resetpassword/resetpassword.component";
 
 
 export const routes: Routes = [
@@ -30,6 +32,8 @@ export const routes: Routes = [
   {path: 'all-profiles', component: AllprofilesComponent, canActivate: [AuthGuard]},
   {path: 'all-bookings', component: AllbookingsComponent, canActivate: [AuthGuard]},
   {path: 'payment', component: PaymentComponent},
+  {path: 'forgot-password', component: ForgotpasswordComponent},
+  {path: 'reset-password', component: ResetpasswordComponent},
   {path: 'payment-edit', component: PaymentEditComponent},
   {path: '', redirectTo: '', pathMatch: 'full'},
   {path: '**', redirectTo: ''}

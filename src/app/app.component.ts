@@ -16,6 +16,8 @@ import {QuickBookingComponent} from "./components/quick-booking/quick-booking.co
 import {BookingSuccessComponent} from "./components/booking-success/booking-success.component";
 import {AllbookingsComponent} from "./components/allbookings/allbookings.component";
 import {AllprofilesComponent} from "./components/allprofiles/allprofiles.component";
+import {ForgotpasswordComponent} from "./components/forgotpassword/forgotpassword.component";
+import {ResetpasswordComponent} from "./components/resetpassword/resetpassword.component";
 
 @Component({
   selector: 'app-root',
@@ -24,7 +26,7 @@ import {AllprofilesComponent} from "./components/allprofiles/allprofiles.compone
     RouterLinkActive, HttpClientModule, SchedulerComponent, LoginComponent,
     RegisterComponent, CreateComponent, EditComponent, PaymentComponent,
     ProfileComponent, ProfileEditComponent, MybookingsComponent, QuickBookingComponent,
-    BookingSuccessComponent, AllbookingsComponent, AllprofilesComponent
+    BookingSuccessComponent, AllbookingsComponent, AllprofilesComponent, ForgotpasswordComponent, ResetpasswordComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
